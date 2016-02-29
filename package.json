@@ -1,0 +1,41 @@
+{
+  "name": "alaska-update",
+  "version": "0.1.0",
+  "description": "Alaska update service",
+  "main": "lib/alaska-update.js",
+  "scripts": {
+    "build": "babel ./src --out-dir ./lib",
+    "watch": "babel ./src --out-dir ./lib -w",
+    "prebuild": "rimraf lib",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maichong/alaska-update.git"
+  },
+  "author": {
+    "email": "liang@maichong.it",
+    "name": "liang",
+    "url": "https://github.com/liangxingchen"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maichong/alaska-update/issues"
+  },
+  "homepage": "https://github.com/maichong/alaska-update#readme",
+  "peerDependencies": {
+    "alaska": "*"
+  },
+  "devDependencies": {
+    "babel-plugin-syntax-async-functions": "^6.5.0",
+    "babel-plugin-syntax-class-properties": "^6.5.0",
+    "babel-plugin-transform-class-properties": "^6.5.2",
+    "babel-plugin-transform-es2015-destructuring": "^6.5.0",
+    "babel-plugin-transform-es2015-parameters": "^6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "rimraf": "^2.5.2"
+  },
+  "dependencies": {
+    "mz": "^2.3.1"
+  }
+}
