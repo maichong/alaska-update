@@ -34,7 +34,6 @@ export default class UpdateService extends Alaska.Service {
         return;
       }
       if (files.length) {
-        console.log('Apply update scripts...');
         let AppUpdate = service.model('AppUpdate');
         for (let file of files) {
           let has = await AppUpdate.count({ key: file });
@@ -54,7 +53,6 @@ export default class UpdateService extends Alaska.Service {
             await (new AppUpdate({ key: file })).save();
           }
         }
-        console.log('Update successfully...');
       }
     });
   }
