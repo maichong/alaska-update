@@ -8,6 +8,8 @@
 const service = __service;
 
 export default class AppUpdate extends service.Model {
+  static title = 'key';
+
   static fields = {
     key: {
       type: String,
