@@ -22,11 +22,10 @@ export default class UpdateService extends Alaska.Service {
   postInit() {
     let service = this;
     let alaska = this.alaska;
-    let mainService = alaska.mainService();
-    mainService.post('launch', async function () {
+    let main = alaska.main;
+    main.post('launch', async function () {
       //检查更新脚本
-      console.log(mainService.dir);
-      let dir = mainService.dir + '/updates/';
+      let dir = main.dir + '/updates/';
       let files;
       try {
         files = await fs.readdir(dir);
@@ -40,7 +39,7 @@ export default class UpdateService extends Alaska.Service {
           if (!has) {
             console.log('Apply update script ', file);
             let original = global.__service;
-            global.__service = mainService;
+            global.__service = main;
             let mod = require(dir + file);
             global.__service = original;
 
@@ -57,4 +56,3 @@ export default class UpdateService extends Alaska.Service {
     });
   }
 }
-
