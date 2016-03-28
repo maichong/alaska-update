@@ -6,7 +6,6 @@
 
 
 import Alaska from 'alaska';
-import * as fs from 'mz/fs';
 
 /**
  * @class UpdateService
@@ -19,40 +18,19 @@ export default class UpdateService extends Alaska.Service {
     super(options, alaska);
   }
 
-  postInit() {
-    let service = this;
-    let alaska = this.alaska;
-    let main = alaska.main;
-    main.post('launch', async function () {
-      //检查更新脚本
-      let dir = main.dir + '/updates/';
-      let files;
-      try {
-        files = await fs.readdir(dir);
-      } catch (error) {
-        return;
-      }
-      if (files.length) {
-        let AppUpdate = service.model('AppUpdate');
-        for (let file of files) {
-          let has = await AppUpdate.count({ key: file });
-          if (!has) {
-            console.log('Apply update script ', file);
-            let original = global.__service;
-            global.__service = main;
-            let mod = require(dir + file);
-            global.__service = original;
-
-            if (!(typeof mod.default === 'function')) {
-              console.log(`Update script "${file}" must export a function as default!`);
-              process.exit();
-            }
-
-            await mod.default();
-            await (new AppUpdate({ key: file })).save();
-          }
+  async postInit() {
+    let MAIN = this.alaska.main;
+    if (MAIN.config('autoUpdate')) {
+      MAIN.pre('route', async () => {
+        //检查更新脚本
+        let dir = MAIN.dir + '/updates/';
+        try {
+          await this.run('Update', { dir })
+        } catch (error) {
+          console.error(error.stack);
+          process.exit(1);
         }
-      }
-    });
+      });
+    }
   }
 }
