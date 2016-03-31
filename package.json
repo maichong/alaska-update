@@ -1,6 +1,6 @@
 {
   "name": "alaska-update",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Alaska update service",
   "main": "lib/alaska-update.js",
   "scripts": {
@@ -29,10 +29,10 @@
   "devDependencies": {
     "babel-plugin-syntax-async-functions": "^6.5.0",
     "babel-plugin-syntax-class-properties": "^6.5.0",
-    "babel-plugin-transform-class-properties": "^6.5.2",
-    "babel-plugin-transform-es2015-destructuring": "^6.5.0",
-    "babel-plugin-transform-es2015-parameters": "^6.5.0",
-    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "babel-plugin-transform-class-properties": "^6.6.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
+    "babel-plugin-transform-es2015-parameters": "^6.7.0",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
     "rimraf": "^2.5.2"
   },
   "dependencies": {

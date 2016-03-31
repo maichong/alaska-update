@@ -4,9 +4,6 @@
  * @author Liang <liang@maichong.it>
  */
 
-
-const service = __service;
-
 export default class AppUpdate extends service.Model {
   static title = 'key';
 
@@ -16,6 +13,7 @@ export default class AppUpdate extends service.Model {
       index: true
     },
     createdAt: {
+      label: 'Created At',
       type: Date
     }
   };

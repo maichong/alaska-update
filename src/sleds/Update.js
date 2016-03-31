@@ -8,7 +8,7 @@
 
 import * as fs from 'mz/fs';
 
-export default class Update extends __service.Sled {
+export default class Update extends service.Sled {
 
   async exec() {
     const service = this.service;
@@ -30,10 +30,7 @@ export default class Update extends __service.Sled {
         let has = await AppUpdate.count({ key: file });
         if (!has) {
           console.log('Apply update script ', file);
-          let original = global.__service;
-          global.__service = MAIN;
-          let mod = require(dir + file);
-          global.__service = original;
+          let mod = alaska.util.include(dir + file, true, { service: MAIN, alaska: MAIN.alaska });
 
           if (!(typeof mod.default === 'function')) {
             console.log(`Update script "${file}" must export a function as default!`);
