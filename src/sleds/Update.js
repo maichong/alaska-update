@@ -32,12 +32,12 @@ export default class Update extends service.Sled {
           console.log('Apply update script ', file);
           let mod = alaska.util.include(dir + file, true, { service: MAIN, alaska: MAIN.alaska });
 
-          if (!(typeof mod.default === 'function')) {
-            console.log(`Update script "${file}" must export a function as default!`);
+          if (!(typeof mod === 'function')) {
+            console.log(`Update script "${file}" must export a async function as default!`);
             process.exit();
           }
 
-          await mod.default();
+          await mod();
           await (new AppUpdate({ key: file })).save();
         }
       }
