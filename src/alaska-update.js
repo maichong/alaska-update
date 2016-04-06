@@ -21,7 +21,7 @@ export default class UpdateService extends Alaska.Service {
   async postInit() {
     let MAIN = this.alaska.main;
     if (MAIN.config('autoUpdate')) {
-      MAIN.pre('route', async () => {
+      MAIN.pre('mount', async () => {
         //检查更新脚本
         let dir = MAIN.dir + '/updates/';
         try {

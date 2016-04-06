@@ -4,7 +4,6 @@
  * @author Liang <liang@maichong.it>
  */
 
-export default{
-  api: false,
-  controllers: false
+export default {
+  prefix: false
 };
