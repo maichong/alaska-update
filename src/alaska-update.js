@@ -4,7 +4,6 @@
  * @author Liang <liang@maichong.it>
  */
 
-
 import Alaska from 'alaska';
 
 /**

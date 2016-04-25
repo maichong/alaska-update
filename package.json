@@ -1,6 +1,6 @@
 {
   "name": "alaska-update",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Alaska update service",
   "main": "lib/alaska-update.js",
   "scripts": {
