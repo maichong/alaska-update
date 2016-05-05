@@ -12,8 +12,8 @@ import Alaska from 'alaska';
 export default class UpdateService extends Alaska.Service {
   constructor(options, alaska) {
     options = options || {};
-    options.id = 'alaska-update';
-    options.dir = __dirname;
+    options.dir = options.dir || __dirname;
+    options.id = options.id || 'alaska-update';
     super(options, alaska);
   }
 
