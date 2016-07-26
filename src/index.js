@@ -4,12 +4,12 @@
  * @author Liang <liang@maichong.it>
  */
 
-import Alaska from 'alaska';
+import alaska from 'alaska';
 
 /**
  * @class UpdateService
  */
-export default class UpdateService extends Alaska.Service {
+class UpdateService extends alaska.Service {
   constructor(options, alaska) {
     options = options || {};
     options.dir = options.dir || __dirname;
@@ -33,3 +33,5 @@ export default class UpdateService extends Alaska.Service {
     }
   }
 }
+
+export default new UpdateService();

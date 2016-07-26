@@ -4,15 +4,13 @@
  * @author Liang <liang@maichong.it>
  */
 
-'use strict';
+import fs from 'mz/fs';
+import alaska from 'alaska';
+import AppUpdate from '../models/AppUpdate';
 
-import * as fs from 'mz/fs';
-
-export default class Update extends service.Sled {
+export default class Update extends alaska.Sled {
 
   async exec() {
-    const service = this.service;
-    const MAIN = service.alaska.main;
     const dir = this.data.dir;
     if (!dir) {
       throw new ReferenceError('alaska-update sled Update data.dir is required');
@@ -25,12 +23,11 @@ export default class Update extends service.Sled {
       return;
     }
     if (files.length) {
-      let AppUpdate = service.model('AppUpdate');
       for (let file of files) {
         let has = await AppUpdate.count({ key: file });
         if (!has) {
           console.log('Apply update script ', file);
-          let mod = alaska.util.include(dir + file, true, { service: MAIN, alaska: MAIN.alaska });
+          let mod = alaska.util.include(dir + file, true);
 
           if (!(typeof mod === 'function')) {
             console.log(`Update script "${file}" must export a async function as default!`);

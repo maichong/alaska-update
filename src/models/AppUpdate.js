@@ -4,8 +4,11 @@
  * @author Liang <liang@maichong.it>
  */
 
-export default class AppUpdate extends service.Model {
+import alaska from 'alaska';
+
+export default class AppUpdate extends alaska.Model {
   static title = 'key';
+  static icon = 'upload';
 
   static fields = {
     key: {

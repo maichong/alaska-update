@@ -5,5 +5,5 @@
  */
 
 export default {
-  AppUpdate: 'App Update'
+  AppUpdate: 'App Update Logs'
 };

@@ -1,16 +1,16 @@
 {
   "name": "alaska-update",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Alaska update service",
   "keywords": [
     "alaska",
     "alaska-service"
   ],
-  "main": "lib/alaska-update.js",
+  "main": "index.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./lib",
-    "watch": "babel ./src --out-dir ./lib -w",
-    "prebuild": "rimraf lib",
+    "build": "babel ./src --out-dir ./",
+    "watch": "babel ./src --out-dir ./ -w",
+    "prebuild": "rimraf lib api controllers config locales middlewares models sleds views",
     "prepublish": "npm run build"
   },
   "repository": {
